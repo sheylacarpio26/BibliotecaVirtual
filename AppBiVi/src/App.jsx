@@ -9,7 +9,7 @@ const App=()=> {
         <Navigation/>
         <Routes>
           <Route path="/" element = {<IndexView/>}/>
-          <Route path="/gestionarLibros" element={<AdmBooksView />} />
+          <Route path="/admbooks" element={<AdmBooksView />} />
         </Routes>
       </Router>
   )
