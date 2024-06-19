@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route }  from "react-router-dom";
 import Navigation from './components/Navigation';
-import InicioView from './views/InicioView';
-import GestionarLibrosView from './views/GestionarLibrosView';
+import IndexView from "./views/IndexView";
+import AdmBooksView from "./views/AdmBooksView";
 
 const App=()=> {
     return (
       <Router>
         <Navigation/>
         <Routes>
-          <Route path="/" element = {<InicioView/>}/>
-          <Route path="/gestionarLibros" element={<GestionarLibrosView />} />
+          <Route path="/" element = {<IndexView/>}/>
+          <Route path="/gestionarLibros" element={<AdmBooksView />} />
         </Routes>
       </Router>
   )

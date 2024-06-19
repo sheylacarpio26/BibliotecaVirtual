@@ -1,4 +1,4 @@
-const InicioView =()=>{
+const IndexView =()=>{
     return (
         <div>
             <h1>BiVi</h1>
@@ -6,4 +6,4 @@ const InicioView =()=>{
     )
 }
 
-export default InicioView
+export default IndexView

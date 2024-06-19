@@ -1,4 +1,4 @@
-const GestionarLibrosView =()=>{
+const AdmBooksView =()=>{
     return (
         <div>
             <h1>Gestionar Libros</h1>
@@ -6,4 +6,4 @@ const GestionarLibrosView =()=>{
     )
 }
 
-export default GestionarLibrosView
+export default AdmBooksView
