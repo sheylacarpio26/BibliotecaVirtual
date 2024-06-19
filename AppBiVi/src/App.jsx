@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route }  from "react-router-dom";
 import Navigation from './components/Navigation';
-import IndexView from "./views/IndexView";
-import AdmBooksView from "./views/AdmBooksView";
+import IndexView from './views/IndexView';
+import AdmBooksView from './views/AdmBooksView';
 
 const App=()=> {
     return (
