@@ -29,7 +29,7 @@ const createBook = async (producto) => {
 const getBookById = async (id) => {
   try {
     const respuesta = await axios.get(`${URL}/books/${id}`);
-    console.log("getBookById: ", respuesta);
+    console.log("getBookById valor: ", respuesta);
     return respuesta.data;
   } catch (error) {
     throw error;
