@@ -4,26 +4,21 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
+import MiDropdown from "../utils/CustomNavItemHover";
 const Navigation = () => {
   return (
-    /*<Navbar className="bg-body-tertiary" expand="lg">
+    <Navbar expand="lg" className="bg-success">
       <Container>
-        <Navbar.Brand>BiVi</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-              <Link to="/" className="nav-link">Inicio</Link>
-              <Link to="/admbooks" className="nav-link">Gestionar Libros</Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-*/
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Bivi</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img
+            src="/public/lectura.png"
+            width="60"
+            height="60"
+            className="d-inline-block align-top"
+            alt="BiVi logo"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -33,17 +28,9 @@ const Navigation = () => {
             <Link to="/admbooks" className="nav-link">
               Gestionar Libros
             </Link>
-
-            <NavDropdown title="Categorias" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#cat/3.1">Cuentos</NavDropdown.Item>
-              <NavDropdown.Item href="#cat/3.2">Artes</NavDropdown.Item>
-              <NavDropdown.Item href="#cat/3.3">Derecho</NavDropdown.Item>
-              <NavDropdown.Item href="#cat/3.4">
-                Programación y Tecnología
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.5">Mangas</NavDropdown.Item>
-            </NavDropdown>
+            {/* Inicio NavDropdown con hover personalizado */}
+            <MiDropdown />
+            {/* Fin NavDropdown con hover personalizado */}
           </Nav>
           <Form className="d-flex">
             <Form.Control
