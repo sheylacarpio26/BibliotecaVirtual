@@ -21,8 +21,10 @@ const IndexView = () => {
 
   return (
     <div>
-      <h1 className='mb-4'>Los Libros</h1>
-      <ListBook books={data} />
+      <h2 className='mb-4'>Bienvenido a ViBi Libros</h2>
+      {/* <ListBook books={data} /> */}
+      {/* AÑADIR AQUI COMPONENTE PARA MOSTRAR LAS CARTAS DE LIBROS */}
+      {/* POR DEFECTO MUESTRE TODO, PERO QUE INCLUYA FILTRO POR GÉNERO*/}
     </div>
   );
 };
