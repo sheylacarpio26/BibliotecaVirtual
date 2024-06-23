@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ListBook from "../components/ListBook";
-import ListBookCard from "../components/ListBookCard";
 import { getBooks } from "../services/bookService";
+
 
 const IndexView = () => {
   const [data, setBooks] = useState([]);
@@ -22,8 +22,8 @@ const IndexView = () => {
 
   return (
     <div>
-      <h2 className='mb-4'>Bienvenido a "ViBi Libros"</h2>
-      <ListBookCard books={data} />
+      <h2 className='mb-4'>Bienvenido a ViBi Libros</h2>
+      {/* <ListBook books={data} /> */}
       {/* AÑADIR AQUI COMPONENTE PARA MOSTRAR LAS CARTAS DE LIBROS */}
       {/* POR DEFECTO MUESTRE TODO, PERO QUE INCLUYA FILTRO POR GÉNERO*/}
     </div>
