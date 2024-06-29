@@ -1,10 +1,9 @@
 
-const FormBook = ({ values }) => {
+const FormBook = ({ handleValues, handleImage, handleSubmit, values, title }) => {
   return (
     <div className="container pt-4">
       <h1 className="mb-4">{values.titulo}</h1>
-      <form>
-      {/* <form onSubmit={handleSubmit}> */}
+      <form onSubmit={handleSubmit}>
         {/* AUTOR */}
         <div className="mb-3">
           <label className="form-label" htmlFor="nombre">
@@ -17,10 +16,18 @@ const FormBook = ({ values }) => {
             placeholder="Ej. Vestido Azul"
             name="nombre"
             value={values.autor}
-            // onChange={(ev) => setValues({nombre:ev.target.value})}
-           // onChange={handleValues}
+            onChange={handleValues}
           />
         </div>
+              {/* PORTADA */}
+              <div className="mb-3">
+            <img
+              alt="ecommerce"
+              className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+              src={values.portada}
+            />
+            <input type="file" className="form-control" onChange={handleImage} />
+          </div>
         {/* RESUMEN */}
         <div className="mb-3">
           <label className="form-label" htmlFor="resumen">
@@ -31,15 +38,9 @@ const FormBook = ({ values }) => {
             id="resumen"
             name="resumen"
             value={values.resumen}
-           // onChange={handleValues}
+            onChange={handleValues}
           ></textarea>
-          {/* PORTADA */}
-          <div className="mb-3">
-            <label className="form-label" htmlFor="portada">
-              Portada:
-            </label>
-            {/* <input type="file" className="form-control" onChange={handleImage} /> */}
-          </div>
+    
           {/* EDITORIAL */}
           <div className="mb-3">
             <label className="form-label" htmlFor="editorial">
@@ -52,7 +53,7 @@ const FormBook = ({ values }) => {
               placeholder="100"
               name="editorial"
               value={values.editorial}
-             // onChange={handleValues}
+              onChange={handleValues}
             />
           </div>
           {/* GENERO */}
@@ -67,7 +68,7 @@ const FormBook = ({ values }) => {
               placeholder="Jeans"
               name="genero"
               value={values.genero}
-           //   onChange={handleValues}
+              onChange={handleValues}
             />
           </div>
           {/* {PDF} */}

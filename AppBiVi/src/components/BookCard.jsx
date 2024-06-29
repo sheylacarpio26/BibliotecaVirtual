@@ -22,7 +22,7 @@ const BookCard = ({ book }) => {
         </Card.Title>
         <Card.Img
           variant="top"
-          src="https://images.cdn3.buscalibre.com/fit-in/360x360/61/8d/618d227e8967274cd9589a549adff52d.jpg"
+          src={portada}
           alt={titulo}
           style={{
             maxWidth: "50%",
