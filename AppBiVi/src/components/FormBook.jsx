@@ -1,11 +1,14 @@
 
-const FormBook = ({ handleValues, handleImage, handleSubmit, values,title, nombreBoton }) => {
+const FormBook = ({ handleValues, handleImage, handleFile,handleSubmit, values, title, nombreBoton }) => {
+  console.log("Valor del PDF es: ", values.pdf);
+  const archivo = values.pdf;
+  console.log("Valor del ARCHIVO es: ", archivo);
   return (
     <div className="container pt-4">
       <h2>{title}</h2>
       <form onSubmit={handleSubmit}>
-         {/* TÍTULO */}
-         <div className="mb-3">
+        {/* TÍTULO */}
+        <div className="mb-3">
           <label className="form-label" htmlFor="titulo">
             Título:
           </label>
@@ -34,15 +37,15 @@ const FormBook = ({ handleValues, handleImage, handleSubmit, values,title, nombr
             onChange={handleValues}
           />
         </div>
-              {/* PORTADA */}
-              <div className="mb-3">
-            <img
-              alt="ecommerce"
-              className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src={values.portada}
-            />
-            <input type="file" className="form-control" onChange={handleImage} />
-          </div>
+        {/* PORTADA */}
+        <div className="mb-3">
+          <img
+            alt="ecommerce"
+            className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+            src={values.portada}
+          />
+          <input type="file" className="form-control" onChange={handleImage} />
+        </div>
         {/* RESUMEN */}
         <div className="mb-3">
           <label className="form-label" htmlFor="resumen">
@@ -55,7 +58,7 @@ const FormBook = ({ handleValues, handleImage, handleSubmit, values,title, nombr
             value={values.resumen}
             onChange={handleValues}
           ></textarea>
-    
+
           {/* EDITORIAL */}
           <div className="mb-3">
             <label className="form-label" htmlFor="editorial">
@@ -89,9 +92,11 @@ const FormBook = ({ handleValues, handleImage, handleSubmit, values,title, nombr
           {/* {PDF} */}
           <div className="mb-3">
             <label className="form-label" htmlFor="pdf">
-              PDF
+              PDF:  
             </label>
-            {/* <input type="file" className="form-control" onChange={handleImage} /> */}
+            <a href={values.pdf}>{values.titulo}
+            </a>
+            <input type="file" className="form-control" onChange={handleFile} />
           </div>
         </div>
         <button type="submit" className="btn btn-primary btn-lg">

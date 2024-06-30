@@ -7,7 +7,7 @@ import FormBook from "../components/FormBook";
 import { getBookById, updateBook } from "../services/bookService";
 
 let imagen; //si no tiene nada es undefined
-
+let archivo; //si no tiene nada es undefined
 const EditBookView = () => {
       //Definiendo la estructura del libro
       const [values, setValues] = useState({
@@ -37,6 +37,10 @@ const EditBookView = () => {
       const handleImage = (ev) => {
         imagen = ev.target.files[0];
       };
+      //Gestionar archivo PDF
+      const handleFile = (ev) => {
+        archivo = ev.target.files[0];
+      };
 
       const handleSubmit = async (ev) => {
             // prevenir la acción por defecto
@@ -51,30 +55,43 @@ const EditBookView = () => {
               });
               return;
             }
-            //subimos la imagen
+            
             const loading = Swal.fire({
               title: "Actualizando datos del libro",
               text: "Espere por favor...",
               icon: "info",
             });
-
+          //subimos la imagen
             let urlImagen = "";
 
             if (imagen !== undefined) {
               //si el usuario selecciono una imagen se subirá la imagen seleccionada en el FIREBASE
               urlImagen = await uploadFile(imagen);
             }
+            //Subimos el archivo pdf
+            let urlArchivo="";
+            if (archivo !== undefined) {
+              console.log("LLEGUE AQUI");
+              //si el usuario selecciono un archivo se subirá la imagen seleccionada en el FIREBASE
+              urlArchivo = await uploadFile(archivo);
+            }
+            console.log("Nombre del archivo pdf cargado: ",archivo)
             //hacemos una copia del libro, con la info a partir del formulario
             let libroActualizado = {
               ...values,
             };
-            console.log("La URL de la imagen es 1 :",urlImagen);
             //si es que se subio, modifico la propiedad foto en la copia
             //if (urlImagen !== "" && imagen !== undefined) {
               if (imagen !== undefined) {
               libroActualizado.portada=await getUrlImagen(urlImagen.metadata.name);
              
             }
+
+            if (archivo !== undefined) {
+              libroActualizado.pdf=await getUrlImagen(urlArchivo.metadata.name);
+              console.log ("Valor del PDF cargado: ",libroActualizado.pdf );
+            }
+
             //Se crea el libro con la URL de la imagen súbida a firebase
             const resultado = await updateBook(id, libroActualizado);
             loading.close();
@@ -93,6 +110,7 @@ const EditBookView = () => {
           try {
             const resultado = await getBookById(id);
             setValues(resultado)
+            console.log("Resultado de obtener el valor del libro: ",resultado)
           } catch (error) {
             console.log(error)
           }
@@ -105,6 +123,7 @@ const EditBookView = () => {
         <FormBook
         handleValues={handleValues}
         handleImage={handleImage}
+        handleFile={handleFile}
         handleSubmit={handleSubmit}
         values={values}
         title="Editar Libro"
