@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getUrlArchivo } from "../services/storageService";
 //Necesitamos lo siguiente para acceder a la variable de entorno:import.meta.env.VITE_SOMEKEY;
 //const URL = "https://66723b2ee083e62ee43e683b.mockapi.io";
 const URL = import.meta.env.VITE_ENDPOINT_BASE;
@@ -55,11 +56,26 @@ const deleteBook = async (id) => {
     throw error;
   }
 }
+const getArchivoById = async (id) => {
+  try {
+    const respuesta = await axios.get(`${URL}/books/${id}`);
+    console.log("getArchivoById valor LIBRO: ", respuesta);
+    //const _urlArchivo= await getUrlArchivo(respuesta.data.pdf);
+   const _urlArchivo=respuesta.data.pdf;
+    console.log("getArchivoById valor PDF: ", _urlArchivo);
+    return _urlArchivo;
+  } catch (error) {
+    console.log("ERROR NO SE DE Q");
+    throw error;
+   
+  }
+}
 
 export {
     getBooks,
     createBook,
     getBookById,
     updateBook,
-    deleteBook
+    deleteBook,
+    getArchivoById
 }

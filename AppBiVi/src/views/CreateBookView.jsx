@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { uploadFile, getUrlImagen } from "../services/storageService";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import FormBook from "../components/FormBook";
-import { getBookById, updateBook } from "../services/bookService";
+import {createBook } from "../services/bookService";
 
 let imagen; //si no tiene nada es undefined
 
-const EditBookView = () => {
+const CreateBookView = () => {
       //Definiendo la estructura del libro
       const [values, setValues] = useState({
         titulo: "",
@@ -19,7 +18,7 @@ const EditBookView = () => {
         genero: "",
         pdf: ""
       })
-      const { id } = useParams();
+  
       const navigate = useNavigate();
             
       const handleValues = (ev) => {
@@ -43,7 +42,7 @@ const EditBookView = () => {
             ev.preventDefault();
             const { autor, resumen, editorial, genero } = values;
             //validando el formulario
-            if (titulo===""|| autor === "" || resumen === "" || editorial === "" || genero ==="") {
+            if (titulo===""|| autor === "" || resumen === "" || editorial === "" || genero ==="" || imagen==undefined) {
               Swal.fire({
                 title: "Faltan campos por llenar",
                 text: "Verifique el formulario",
@@ -53,7 +52,7 @@ const EditBookView = () => {
             }
             //subimos la imagen
             const loading = Swal.fire({
-              title: "Actualizando datos del libro",
+              title: "Creando datos del libro",
               text: "Espere por favor...",
               icon: "info",
             });
@@ -65,41 +64,30 @@ const EditBookView = () => {
               urlImagen = await uploadFile(imagen);
             }
             //hacemos una copia del libro, con la info a partir del formulario
-            let libroActualizado = {
+            let libroNuevo = {
               ...values,
             };
-            console.log("La URL de la imagen es 1 :",urlImagen);
+            
             //si es que se subio, modifico la propiedad foto en la copia
             //if (urlImagen !== "" && imagen !== undefined) {
               if (imagen !== undefined) {
-              libroActualizado.portada=await getUrlImagen(urlImagen.metadata.name);
+                libroNuevo.portada=await getUrlImagen(urlImagen.metadata.name);
              
             }
             //Se crea el libro con la URL de la imagen súbida a firebase
-            const resultado = await updateBook(id, libroActualizado);
+            const resultado = await createBook(libroNuevo);
             loading.close();
 
             //En el mensaje se muestra solo el botón (OK)
             await Swal.fire({
-              title: "Libro Actualizado",
-              text: `${values.titulo} se actualizo exitosamente`,
+              title: "Libro Creado",
+              text: `${values.titulo} se creó el libro exitosamente`,
               icon: "success",
             });
             // navegacion
             navigate("/");
       };
-      useEffect(() => {
-        const gtBooks = async () => {
-          try {
-            const resultado = await getBookById(id);
-            setValues(resultado)
-          } catch (error) {
-            console.log(error)
-          }
-        }
-        gtBooks();
-      }, []);
-      
+
       return (
 
         <FormBook
@@ -107,10 +95,10 @@ const EditBookView = () => {
         handleImage={handleImage}
         handleSubmit={handleSubmit}
         values={values}
-        title="Editar Libro"
-        nombreBoton="Actualizar"
+        title="Crear Libro"
+        nombreBoton="Crear"
         />
       )
 }
 
-export default EditBookView
+export default CreateBookView

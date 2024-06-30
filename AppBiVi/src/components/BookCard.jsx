@@ -1,9 +1,28 @@
 import Button from "react-bootstrap/Button";
 import { Card } from "react-bootstrap";
+import Swal from "sweetalert2";
+import firebaseErrorsInSpanish from "../utils/firebaseErrorMessages";
+import { Link } from "react-router-dom";
 
 const BookCard = ({ book }) => {
   const { id, titulo, autor, resumen, portada, editorial, genero, pdf } = book;
   // console.log ("PEPITO BOOK",book);
+
+  const navigateToEBook = () => {
+    try {
+      navigate(`/ebook/${id}`);
+
+    } catch (error) {
+      // notify(firebaseErrorsInSpanish[error.code], {type: "error"});
+      Swal.fire({
+        title: "Error",
+        text: firebaseErrorsInSpanish[error.code],
+        icon: "error"
+      })
+    }
+  };
+
+
   return (
     <div
       style={{
@@ -45,6 +64,12 @@ const BookCard = ({ book }) => {
           <Button variant="primary" target="_blank" to={`/libros/${id}`}>
             ver PDF
           </Button>
+          {/* <button onClick={() => { navigateToEBook(id) }}>
+            <i className="fa-solid fa-pen-to-square"></i>
+          </button> */}
+          <Link className="btn btn-primary btn-sm" to={`/ebook/${id}`}> Ver
+            <i className="fa-solid fa-pen-to-square"></i>
+          </Link>
         </Card.Body>
       </Card>
     </div>

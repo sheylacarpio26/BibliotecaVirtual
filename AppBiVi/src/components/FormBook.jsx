@@ -1,20 +1,35 @@
 
-const FormBook = ({ handleValues, handleImage, handleSubmit, values, title }) => {
+const FormBook = ({ handleValues, handleImage, handleSubmit, values,title, nombreBoton }) => {
   return (
     <div className="container pt-4">
-      <h1 className="mb-4">{values.titulo}</h1>
+      <h2>{title}</h2>
       <form onSubmit={handleSubmit}>
+         {/* TÍTULO */}
+         <div className="mb-3">
+          <label className="form-label" htmlFor="titulo">
+            Título:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="titulo"
+            placeholder="Ej. Cien años de soledad"
+            name="titulo"
+            value={values.titulo}
+            onChange={handleValues}
+          />
+        </div>
         {/* AUTOR */}
         <div className="mb-3">
-          <label className="form-label" htmlFor="nombre">
+          <label className="form-label" htmlFor="autor">
             Autor:
           </label>
           <input
             type="text"
             className="form-control"
-            id="nombre"
-            placeholder="Ej. Vestido Azul"
-            name="nombre"
+            id="autor"
+            placeholder="Ej. Gabriel García Márquez"
+            name="autor"
             value={values.autor}
             onChange={handleValues}
           />
@@ -50,7 +65,7 @@ const FormBook = ({ handleValues, handleImage, handleSubmit, values, title }) =>
               type="text"
               className="form-control"
               id="editorial"
-              placeholder="100"
+              placeholder="Nombre de la editorial"
               name="editorial"
               value={values.editorial}
               onChange={handleValues}
@@ -65,7 +80,7 @@ const FormBook = ({ handleValues, handleImage, handleSubmit, values, title }) =>
               type="text"
               className="form-control"
               id="genero"
-              placeholder="Jeans"
+              placeholder="Ej. Drama"
               name="genero"
               value={values.genero}
               onChange={handleValues}
@@ -80,7 +95,7 @@ const FormBook = ({ handleValues, handleImage, handleSubmit, values, title }) =>
           </div>
         </div>
         <button type="submit" className="btn btn-primary btn-lg">
-          Crear
+          {nombreBoton}
         </button>
       </form>
     </div>

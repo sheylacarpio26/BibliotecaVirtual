@@ -35,7 +35,24 @@ const getUrlImagen = async (nombre_imagen) => {
   }
 };
 
+
+//Para obtener dirección del archivo
+const _urlArchivo = import.meta.env.VITE_PORTADA + import.meta.env.VITE_STORAGE_BUCKET_DIR;//PORTADA
+console.log(_urlArchivo);
+
+const getUrlArchivo = async (nombre_archivo) => {
+  try {
+    const resultado = await _urlArchivo + nombre_archivo+"?alt=media";
+
+    return resultado;
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+
 export {
   uploadFile,
-  getUrlImagen
+  getUrlImagen,
+  getUrlArchivo
 }
