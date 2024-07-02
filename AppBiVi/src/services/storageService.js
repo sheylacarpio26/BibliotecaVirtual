@@ -1,6 +1,6 @@
 
 import {ref,uploadBytes} from "firebase/storage"
-import { storage } from "../config/firebase";
+import { storage } from "../Firebase";
 import {nameFileUUID} from "../utils/utils"
 
 const uploadFile = async (imagen) => {

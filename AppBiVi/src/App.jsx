@@ -1,25 +1,73 @@
-import { BrowserRouter as Router, Routes, Route }  from "react-router-dom";
-import Navigation from './components/Navigation';
-import IndexView from './views/IndexView';
-import AdmBooksView from './views/AdmBooksView';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import IndexView from "./views/IndexView";
+import AdmBooksView from "./views/AdmBooksView";
 import CustomNavDropdown from "./utils/CustomNavItemHover";
 import EditBookView from "./views/EditBookView";
 import CreateBookView from "./views/CreateBookView";
 import EBookView from "./views/EBookView";
+import { AuthContextProvider } from "./context/AuthContext";
+import Header from "./components/Header";
+import Auth from "./components/Auth";
+import Protected from "./components/Protected";
+import Footer from "./components/Footer";
 
-const App=()=> {
-    return (
-      <Router>
-        <Navigation/>
+const App = () => {
+  return (
+    <Router>
+      <AuthContextProvider>
+        <Header />
+        
         <Routes>
-          <Route path="/" element = {<IndexView/>}/>
-          <Route path="/admbooks" element={<AdmBooksView />} />
-          <Route path="/editbook/:id" element={<EditBookView />} />
-          <Route path="/createbook" element={<CreateBookView />} />
-          <Route path="/ebook/:id" element={<EBookView />} />
+          <Route path="/" element={<Auth />} />
+          <Route
+            path="home"
+            element={
+              <Protected>
+                <Navigation />
+                <IndexView />
+              </Protected>
+            }
+          />
+          <Route
+            path="/admbooks"
+            element={
+              <Protected>
+                <Navigation />
+                <AdmBooksView />
+              </Protected>
+            }
+          />
+          <Route
+            path="/editbook/:id"
+            element={
+              <Protected>
+                <EditBookView />
+              </Protected>
+            }
+          />
+          <Route
+            path="/createbook"
+            element={
+              <Protected>
+                <CreateBookView />
+              </Protected>
+            }
+          />
+          <Route
+            path="/ebook/:id"
+            element={
+              <Protected>
+                <EBookView />
+              </Protected>
+            }
+          />
+          
         </Routes>
-      </Router>
-  )
-}
+        <Footer />
+      </AuthContextProvider>
+    </Router>
+  );
+};
 
-export default App
+export default App;

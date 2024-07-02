@@ -13,3 +13,12 @@ npm install styled-components
 
 //Para cambiar el estilo de Cards para un CardGrid visitar la siguiente URL
 https://react-bootstrap.netlify.app/docs/components/cards/
+
+//Para poder leer documentos .epub de una url externa que se encuentra almacenada en FIREBASE
+https://numla.com/blog/miscellaneous-17/enabling-cors-in-firebase-hosting-132
+
+//instalar estas dependencias para que funcione los permisos CORS a FIREBASE
+npm install -g firebase-tools
+
+//para que funcione el componente del READERePub
+npm install react-reader epubjs axios
