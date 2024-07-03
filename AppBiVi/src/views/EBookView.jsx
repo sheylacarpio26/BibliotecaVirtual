@@ -4,13 +4,11 @@ import {getBookById } from "../services/bookService";
 import EBook from "../components/EBook"
 
 const EBookView = () => {
-    let archivo="";
+    
     const [value, setValue] = useState("")
     const { id } = useParams();
-
-    console.log("llegue AQUI");
-
-
+    let archivo="";
+   
     useEffect(() => {
         const gtBooks = async () => {
             try {
@@ -23,7 +21,6 @@ const EBookView = () => {
         }
         gtBooks();
     }, []);
-
     return (
 
         <EBook

@@ -71,7 +71,7 @@ const EditBookView = () => {
             //Subimos el archivo pdf
             let urlArchivo="";
             if (archivo !== undefined) {
-              console.log("LLEGUE AQUI");
+    
               //si el usuario selecciono un archivo se subirá la imagen seleccionada en el FIREBASE
               urlArchivo = await uploadFile(archivo);
             }
@@ -82,12 +82,12 @@ const EditBookView = () => {
             };
             //si es que se subio, modifico la propiedad foto en la copia
             //if (urlImagen !== "" && imagen !== undefined) {
-              if (imagen !== undefined) {
+              if (urlImagen !=="" && imagen !== undefined) {
               libroActualizado.portada=await getUrlImagen(urlImagen.metadata.name);
              
             }
 
-            if (archivo !== undefined) {
+            if (urlArchivo!=="" && archivo !== undefined) {
               libroActualizado.pdf=await getUrlImagen(urlArchivo.metadata.name);
               console.log ("Valor del PDF cargado: ",libroActualizado.pdf );
             }
