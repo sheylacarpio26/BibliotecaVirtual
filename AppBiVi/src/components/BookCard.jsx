@@ -36,7 +36,7 @@ const BookCard = ({ book }) => {
     >
       <Card>
         
-        <Card.Title as="h5" className="text-center">
+        <Card.Title as="h5" className="text-center fw-bold text-shadow">
           {titulo}
         </Card.Title>
         <a href={`/ebook/${id}`}>
@@ -58,13 +58,12 @@ const BookCard = ({ book }) => {
         </a>
         
         <Card.Body>
-          <Card.Text> {truncateText(resumen, 150)}</Card.Text>
+          <Card.Text style={{ textAlign: 'justify' }}> {truncateText(resumen, 150)}</Card.Text>
           <Card.Text>Autor: {autor}</Card.Text>
           <Card.Text>Editorial: {editorial}</Card.Text>
           <Card.Text>Género: {genero}</Card.Text>
           <Link className="btn btn-primary btn-sm d-flex align-items-center justify-content-center" to={`/ebook/${id}`}> 
-          <p className="mb-4">Ver</p>
-            <i className="fa-solid fa-eye ml-3" ></i>
+          <i className="fa-solid fa-eye ml-3 me-2" ></i> Ver
           </Link>
         </Card.Body>
       </Card>

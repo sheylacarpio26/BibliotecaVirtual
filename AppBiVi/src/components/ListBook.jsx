@@ -90,7 +90,7 @@ const ListBook = ({ books }) => {
                                     <tr key={id}>
                                         <td>{titulo}</td>
                                         <td>{autor}</td>
-                                        <td>{resumen}</td>
+                                        <td style={{ textAlign: 'justify' }}>{resumen}</td>
                                         {/* <td>"portada a cambiar"</td> */}
                                         <td>{editorial}</td>
                                         <td>{genero}</td>

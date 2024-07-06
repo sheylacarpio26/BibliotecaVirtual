@@ -58,6 +58,7 @@ const FormBook = ({ handleValues, handleImage, handleFile,handleSubmit, values, 
             name="resumen"
             value={values.resumen}
             onChange={handleValues}
+            
           ></textarea>
 
           {/* EDITORIAL */}
@@ -100,7 +101,7 @@ const FormBook = ({ handleValues, handleImage, handleFile,handleSubmit, values, 
             <input type="file" className="form-control" onChange={handleFile} />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary btn-lg">
+        <button type="submit" className="btn btn-primary btn-lg btn-block">
           {nombreBoton}
         </button>
       </form>
