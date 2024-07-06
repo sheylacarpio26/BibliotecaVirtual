@@ -11,11 +11,13 @@ import Header from "./components/Header";
 import Auth from "./components/Auth";
 import Protected from "./components/Protected";
 import Footer from "./components/Footer";
+import { SearchProvider } from './context/SearchContext';
 
 const App = () => {
   return (
     <Router>
       <AuthContextProvider>
+        <SearchProvider>
         <Header />
         
         <Routes>
@@ -65,6 +67,7 @@ const App = () => {
           
         </Routes>
         <Footer />
+        </SearchProvider>
       </AuthContextProvider>
     </Router>
   );

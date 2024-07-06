@@ -4,9 +4,22 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
 import MiDropdown from "../utils/CustomNavItemHover";
+//BUSQUEDA:
+import { SearchContext } from '../context/SearchContext';
+import React, { useContext, useState } from 'react';
+
+
 const Navigation = () => {
+
+  //BUSQUEDA
+  const { setSearchText } = useContext(SearchContext);
+  const [inputText, setInputText] = useState('');
+
+  const handleSearch = () => {
+    setSearchText(inputText);
+  };
+  //BUSQUEDA
   return (
     <Navbar expand="lg" className="bg-success">
       <Container>
@@ -32,14 +45,16 @@ const Navigation = () => {
             <MiDropdown />
             {/* Fin NavDropdown con hover personalizado */}
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
             <Form.Control
               type="search"
               placeholder="Buscar libro virtual"
               className="me-2"
               aria-label="Search"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
             />
-            <Button variant="outline-success">Buscar Libros</Button>
+            <Button variant="outline-success" type="submit">Buscar Libros</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
