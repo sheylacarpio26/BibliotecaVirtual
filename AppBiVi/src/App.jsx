@@ -44,6 +44,7 @@ const App = () => {
             path="/editbook/:id"
             element={
               <Protected>
+                <Navigation />
                 <EditBookView />
               </Protected>
             }

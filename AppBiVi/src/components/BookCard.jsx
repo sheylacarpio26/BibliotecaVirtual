@@ -63,7 +63,7 @@ const BookCard = ({ book }) => {
           <Card.Text>Editorial: {editorial}</Card.Text>
           <Card.Text>Género: {genero}</Card.Text>
           <Link className="btn btn-primary btn-sm d-flex align-items-center justify-content-center" to={`/ebook/${id}`}> 
-          <p className="mb-1">Ver</p>
+          <p className="mb-4">Ver</p>
             <i className="fa-solid fa-eye ml-3" ></i>
           </Link>
         </Card.Body>

@@ -78,7 +78,7 @@ const ListBook = ({ books }) => {
                             {/* <th>Portada</th> */}
                             <th>Editorial</th>
                             <th>Género</th>
-                            <th>pdf</th>
+                            {/* <th>pdf</th> */}
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -94,7 +94,7 @@ const ListBook = ({ books }) => {
                                         {/* <td>"portada a cambiar"</td> */}
                                         <td>{editorial}</td>
                                         <td>{genero}</td>
-                                        <td>"PDF"</td>
+                                        {/* <td>"PDF"</td> */}
                                         <td className="d-flex">
                                             {/* <Link className="btn btn-primary btn-sm" to={`/editbook/${id}`}>
                                                 <i className="fa-solid fa-pen-to-square"></i>
