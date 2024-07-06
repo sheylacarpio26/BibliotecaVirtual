@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import IndexView from "./views/IndexView";
 import AdmBooksView from "./views/AdmBooksView";
-import CustomNavDropdown from "./utils/CustomNavItemHover";
+
 import EditBookView from "./views/EditBookView";
 import CreateBookView from "./views/CreateBookView";
 import EBookView from "./views/EBookView";
@@ -53,6 +53,7 @@ const App = () => {
             path="/createbook"
             element={
               <Protected>
+                <Navigation />
                 <CreateBookView />
               </Protected>
             }
@@ -61,6 +62,7 @@ const App = () => {
             path="/ebook/:id"
             element={
               <Protected>
+                <Navigation />
                 <EBookView />
               </Protected>
             }

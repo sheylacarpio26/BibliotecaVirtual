@@ -58,7 +58,7 @@ const ListBook = ({ books }) => {
             })
             //después de eliminar vuelvo a pedir los productos
             getBooks();
-            navigate(`/admbooks/`);
+            navigate("/");
 
         }
     }

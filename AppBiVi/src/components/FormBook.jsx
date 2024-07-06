@@ -40,11 +40,12 @@ const FormBook = ({ handleValues, handleImage, handleFile,handleSubmit, values, 
         {/* PORTADA */}
         <div className="mb-3">
           <img
-            alt="ecommerce"
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+             alt="imagen de portada"
+             className="img-fluid rounded"
+             style={{ maxWidth:'20%', maxHeight: '20%', objectFit: 'cover' }}
             src={values.portada}
           />
-          <input type="file" className="form-control" onChange={handleImage} />
+          <input type="file" className="form-control" onChange={handleImage}/>
         </div>
         {/* RESUMEN */}
         <div className="mb-3">

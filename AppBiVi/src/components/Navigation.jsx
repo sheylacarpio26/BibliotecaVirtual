@@ -4,8 +4,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import MiDropdown from "../utils/CustomNavItemHover";
-//BUSQUEDA:
+
 import { SearchContext } from '../context/SearchContext';
 import React, { useContext, useState } from 'react';
 
@@ -41,9 +40,6 @@ const Navigation = () => {
             <Link to="/admbooks" className="nav-link">
               Gestionar Libros
             </Link>
-            {/* Inicio NavDropdown con hover personalizado */}
-            <MiDropdown />
-            {/* Fin NavDropdown con hover personalizado */}
           </Nav>
           <Form className="d-flex" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
             <Form.Control
