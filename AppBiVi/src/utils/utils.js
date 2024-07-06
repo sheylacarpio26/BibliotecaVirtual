@@ -7,19 +7,6 @@ const nameFileUUID = (nombreArchivo) => {
   return newName;
 }
 
-// const convertDateToLocal = (fechaYHora, zonaHoraria = "es-ES") => {
-//     const options = {
-//         weekday: 'long',
-//         year: 'numeric',
-//         month: 'long',
-//         day: 'numeric',
-//       };
-
-//     const fecha = new Date(fechaYHora);
-//     return fecha.toLocaleDateString(zonaHoraria, options);
-//     //'viernes, 31 de mayo de 2024'
-// }
-
 export {
     // convertDateToLocal,
     nameFileUUID
